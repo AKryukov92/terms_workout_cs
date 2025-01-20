@@ -1,0 +1,99 @@
+<Haystack>
+  <wheat>select model, ram, screen&#xd;
+from laptop&#xd;
+where price > 1000</wheat>
+  <riddles>
+    <riddle>
+      <id>f0606cce-fa62-4e6c-ab69-3cd5b2b4eece</id>
+      <needle>одну из колонок результата</needle>
+      <next/>
+      <answer>
+        <min>model</min>
+        <max>model</max>
+        <context>ect model, ra</context>
+      </answer>
+      <answer>
+        <min>ram</min>
+        <max>ram</max>
+        <context>el, ram, sc</context>
+      </answer>
+      <answer>
+        <min>screen</min>
+        <max>screen</max>
+        <context>am, screen&#xd;
+fro</context>
+      </answer>
+    </riddle>
+    <riddle>
+      <id>79cca9ca-6201-42e3-b39d-8d3b6fe8da76</id>
+      <needle>название таблицы</needle>
+      <next/>
+      <answer>
+        <min>laptop</min>
+        <max>laptop</max>
+        <context>rom laptop&#xd;
+whe</context>
+      </answer>
+    </riddle>
+    <riddle>
+      <id>d65c7d10-46ce-448f-93de-66bc6cd60693</id>
+      <needle>ограничение на выборку</needle>
+      <next/>
+      <answer>
+        <min>price > 1000</min>
+        <max>where price > 1000</max>
+        <context>top&#xd;
+where price > 1000</context>
+      </answer>
+    </riddle>
+    <riddle>
+      <id>a92ce6e2-3700-4582-b640-56a0ad6cd233</id>
+      <needle>ключевое слово</needle>
+      <next/>
+      <answer>
+        <min>select</min>
+        <max>select</max>
+        <context>select mode</context>
+      </answer>
+      <answer>
+        <min>from</min>
+        <max>from</max>
+        <context>een&#xd;
+from lapt</context>
+      </answer>
+      <answer>
+        <min>where</min>
+        <max>where</max>
+        <context>top&#xd;
+where pric</context>
+      </answer>
+    </riddle>
+    <riddle>
+      <id>7981e005-edbf-4271-8329-30c6b2334db9</id>
+      <needle>поле таблицы laptop</needle>
+      <next/>
+      <answer>
+        <min>model</min>
+        <max>model</max>
+        <context>ect model, ra</context>
+      </answer>
+      <answer>
+        <min>ram</min>
+        <max>ram</max>
+        <context>el, ram, sc</context>
+      </answer>
+      <answer>
+        <min>screen</min>
+        <max>screen</max>
+        <context>am, screen&#xd;
+fro</context>
+      </answer>
+      <answer>
+        <min>price</min>
+        <max>price</max>
+        <context>ere price > 10</context>
+      </answer>
+    </riddle>
+  </riddles>
+  <hint_keyword>sql</hint_keyword>
+</Haystack>

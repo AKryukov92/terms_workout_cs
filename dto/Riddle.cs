@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal class Riddle
+    public class Riddle
     {
         public string Id { get; private set; }
         public string Needle { get; private set; }

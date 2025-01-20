@@ -9,7 +9,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace Sphinx.dto
 {
-    internal class Answer
+    public class Answer
     {
         private readonly string minimal;
         private readonly string maximal;

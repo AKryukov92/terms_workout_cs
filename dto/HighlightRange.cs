@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal class HighlightRange
+    public class HighlightRange
     {
         private readonly int startIndex;
         private readonly int endIndex;

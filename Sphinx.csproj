@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -63,10 +63,14 @@
       <DependentUpon>FrmHaystack.cs</DependentUpon>
     </Compile>
     <Compile Include="dto\Haystack.cs" />
+    <Compile Include="FrmHaystackPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IView.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RiddleLoaderService.cs" />
     <EmbeddedResource Include="FrmHaystack.resx">
       <DependentUpon>FrmHaystack.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +95,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="haystacks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

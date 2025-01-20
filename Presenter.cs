@@ -8,5 +8,16 @@ namespace Sphinx
 {
     internal class Presenter
     {
+        private readonly IView view;
+        private readonly RiddleLoaderService RiddleLoaderService;
+        public Presenter(IView view)
+        {
+            this.view = view;
+            RiddleLoaderService = new RiddleLoaderService();
+        }
+        public void Init()
+        {
+            view.ShowListOfHaystacks(RiddleLoaderService.LoadHaystackNames());
+        }
     }
 }

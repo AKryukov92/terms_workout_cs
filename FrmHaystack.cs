@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sphinx.dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,13 @@ namespace Sphinx
 {
     public partial class FrmHaystack : Form
     {
+        private Presenter presenter;
         public FrmHaystack()
         {
             InitializeComponent();
+            presenter = new Presenter(this);
+            presenter.Init();
         }
-
         private void RtxtHaystack_KeyUp(object sender, KeyEventArgs e)
         {
 
