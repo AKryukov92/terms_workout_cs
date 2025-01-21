@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal abstract class RiddleProgress
+    public abstract class RiddleProgress
     {
         public abstract bool IsFullySolved();
         public abstract bool IsPartiallySolved();

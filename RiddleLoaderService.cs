@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Resources;
 using System.Collections;
+using System.IO;
+using System.Xml.Serialization;
+using Sphinx.dto;
+using System.Xml;
 
 namespace Sphinx
 {
@@ -15,17 +19,26 @@ namespace Sphinx
 
         }
 
-        public string[] LoadHaystackNames()
+        public Meta LoadMeta()
         {
-            string resxFile = @".\Haystacks.resx";
-            List<string> names = new List<string>();
-            using (ResXResourceReader resxReader = new ResXResourceReader(resxFile))
+            XmlSerializer serializer = new XmlSerializer(typeof(Meta));
+            using (Stream reader = new FileStream("./haystacks/meta.xml", FileMode.Open))
             {
-                foreach (DictionaryEntry entry in resxReader)
+                return (Meta)serializer.Deserialize(reader);
+            }
+        }
+
+        public Haystack LoadHaystack(string haystackId)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Haystack));
+            using (Stream reader = new FileStream("./haystacks/" + haystackId + ".xml", FileMode.Open))
+            {
+                Haystack haystack = (Haystack)serializer.Deserialize(reader);
+                if (haystack.Riddles.Count == 0)
                 {
-                    names.Add(entry.Key.ToString());
+                    throw new Exception("Задача не содержит вопросов");
                 }
-                return names.ToArray();
+                return haystack;
             }
         }
     }

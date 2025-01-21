@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <theme name="SQL">
+        <haystack name="sql-ex №3" id="501fc5f1-555b-4096-82bc-8909e8e6c765"/>
+        <haystack name="sql-ex №5" id="7d58e522-3883-4df8-9289-72c880fe7a5c"/>
+        <haystack name="sql-ex №6" id="1f68fc7b-b1c4-4ea3-8b74-8d10fe93b8ba"/>
+        <haystack name="sql-ex №7" id="feb27f72-632b-4f40-b948-f48841b3711c"/>
+        <haystack name="sql-ex №10" id="e78d9173-0be4-4356-8afb-725c4305d611"/>
+        <haystack name="sql-ex №13" id="9e3c344f-a825-4d0d-a95c-673fc4787b43"/>
+        <haystack name="sql-ex №14" id="70b685c4-f8fa-42e7-83be-624120dcfd03"/>
+        <haystack name="sql-ex №15" id="a2974af4-5057-4f7e-9e1b-87ba0f483da0"/>
+        <haystack name="sql-ex №16" id="1f7131bb-4fe7-45fe-a216-e387a338a181"/>
+    </theme>
+    <theme name="SDL.dll">
+        <haystack name="Минимальный проект" id="00c8c3a7-aca6-4267-8182-6e970b118842"/>
+        <haystack name="Отображение окна" id="7564d271-5f3e-433b-849c-6b4b829262ef"/>
+    </theme>
+    <theme name="csharp">
+        <haystack name="1662" id="1662"/>
+        <haystack name="1860" id="1860"/>
+        <haystack name="9231" id="9231"/>
+        <haystack name="Windows forms" id="be2f8fb4-b4af-4912-bb7d-6228ac41afa4"/>
+        <haystack name="Windows forms 2" id="b840902b-38e6-43ff-8be7-c99daf773add"/>
+        <haystack name="Вывод на экран элемента массива по индексу" id="9dde380c-32d8-4f5f-85fd-570426f30883"/>
+        <haystack name="Преобразование массива строк в массив чисел" id="eca077b6-b096-4079-bb02-cf5347e7e909"/>
+        <haystack name="Поиск строки в массиве строк" id="a1db3822-768a-4dca-bc39-8dbb49e75bf2"/>
+        <haystack name="Проверка упорядоченности массива" id="62083bc7-077b-4240-92cc-1dc7159a2b9f"/>
+
+    </theme>
+    <theme name="html">
+        <haystack name="тэг, атрибут" id="e70430e7-f13c-4428-9b76-1a0539e6821b"/>
+        <haystack name="стили в атрибутах" id="9fb848ec-34ac-40f1-a52e-ef42d4474778"/>
+        <haystack name="простые селекторы" id="28ba4d58-30de-46ca-95ac-ac27143dec91"/>
+        <haystack name="css сложные селекторы" id="a9f91427-1098-40f1-809d-8586aab009d6"/>
+        <haystack name="стили в заголовке" id="91e8c948-af6b-497a-8931-281781f0ab59"/>
+        <haystack name="простая форма" id="5e9c00b7-de5c-4abc-ad11-0c429f7a735d"/>
+        <haystack name="псведоклассы" id="ac703d2d-a4b6-41d4-b2b5-6a375b916fc1"/>
+        <haystack name="приоритеты свойств стиля" id="0d53fe02-d4dc-46d1-9c00-e34aed2afdce"/>
+        <haystack name="наследование свойств стиля" id="cf412586-0141-4c3b-8522-b45fa8d85043"/>
+    </theme>
+    <theme name="javascript">
+        <haystack name="кнопка с простым обработчиком" id="b028ce1e-8b48-4612-9643-078867821091"/>
+        <haystack name="работа с объектом" id="2c89a45f-f1bc-4565-b9a1-fb64fc2236c4"/>
+    </theme>
+    <theme name="react">
+        <haystack name="Компонент Hello + JSX" id="f82aa433-2af3-48bd-a801-3a0f77f3f7db"/>
+        <haystack name="Компонент Hello + JSX 2" id="2f03088c-6d1c-4210-a20f-f113b4e0738a"/>
+        <haystack name="List" id="a958ecc9-56a6-494f-a8f2-7633d8b5084f"/>
+        <haystack name="List 2" id="cbf4244a-63fe-4b15-96fd-b651f52de347"/>
+    </theme>
+    <theme name="netstat">
+        <haystack name="результат команды netstat" id="1ce067e4-102d-4e79-94f7-2f95579140e3"/>
+    </theme>
+    <theme name="java">
+        <haystack name="Вывод на экран элемента массива по индексу" id="4eab8f11-7dc5-4f8e-9174-eec89eccf240"/>
+        <haystack name="Запись значения в элемент массива" id="640b01f4-1db4-46f0-9dd2-6c4058b380f2"/>
+        <haystack name="Вывод на экран нескольких элементов массива" id="0f48dc09-f725-4dd7-b1a7-b8654144f762"/>
+        <haystack name="Поиск строки в массиве строк" id="7d57fd86-ccc2-46fd-94e2-8dbabe25bf23"/>
+        <haystack name="Преобразование массива строк в массив чисел" id="6b01cdc9-4ae4-4ce9-a91e-3f0ef5240e91"/>
+        <haystack name="Где нельзя" id="81f5d38a-cf0f-41d8-8f3c-b7bb61d2b9bf"/>
+        <haystack name="Методы" id="d3104744-13fd-4722-a51e-1895739913c2"/>
+        <haystack name="Методы и юнит-тест" id="c3718580-7399-4546-bd5f-5edf4e321ea9"/>
+        <haystack name="Методы с разной сигнатурой" id="c6f8d020-1a77-403b-81c7-016b2815dcb3"/>
+        <haystack name="Методы с разным названием и сигнатурой" id="58138e85-57b9-4f0f-9830-8238ba602dc6"/>
+        <haystack name="Объявление класса" id="fa6a3612-2d87-462e-b92b-239742011068"/>
+    </theme>
+</root>

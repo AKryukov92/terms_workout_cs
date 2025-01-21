@@ -30,12 +30,12 @@
         {
             this.LblNeedle = new System.Windows.Forms.Label();
             this.LblProgress = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FlpHeader = new System.Windows.Forms.FlowLayoutPanel();
             this.LblCorrectAnswers = new System.Windows.Forms.Label();
             this.LblFinalResult = new System.Windows.Forms.Label();
             this.BtnSelectNew = new System.Windows.Forms.Button();
             this.LblPreVerdict = new System.Windows.Forms.Label();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.FlpFate = new System.Windows.Forms.FlowLayoutPanel();
             this.LblVerdict = new System.Windows.Forms.Label();
             this.LblPostVerdict = new System.Windows.Forms.Label();
             this.LblNeedToCorrect = new System.Windows.Forms.Label();
@@ -43,10 +43,12 @@
             this.RtxtHaystack = new System.Windows.Forms.RichTextBox();
             this.LblPressEnter = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.LstHaystacks = new System.Windows.Forms.ListBox();
             this.LblError = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
+            this.TreeMeta = new System.Windows.Forms.TreeView();
+            this.LblChooseHaystack = new System.Windows.Forms.Label();
+            this.BtnSelectTask = new System.Windows.Forms.Button();
+            this.FlpHeader.SuspendLayout();
+            this.FlpFate.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,18 +70,17 @@
             this.LblProgress.TabIndex = 1;
             this.LblProgress.Text = "Решенных задач";
             // 
-            // flowLayoutPanel1
+            // FlpHeader
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.flowLayoutPanel1, 2);
-            this.flowLayoutPanel1.Controls.Add(this.LblProgress);
-            this.flowLayoutPanel1.Controls.Add(this.LblCorrectAnswers);
-            this.flowLayoutPanel1.Controls.Add(this.LblFinalResult);
-            this.flowLayoutPanel1.Controls.Add(this.BtnSelectNew);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1047, 26);
-            this.flowLayoutPanel1.TabIndex = 2;
+            this.FlpHeader.Controls.Add(this.LblProgress);
+            this.FlpHeader.Controls.Add(this.LblCorrectAnswers);
+            this.FlpHeader.Controls.Add(this.LblFinalResult);
+            this.FlpHeader.Controls.Add(this.BtnSelectNew);
+            this.FlpHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlpHeader.Location = new System.Drawing.Point(344, 3);
+            this.FlpHeader.Name = "FlpHeader";
+            this.FlpHeader.Size = new System.Drawing.Size(706, 26);
+            this.FlpHeader.TabIndex = 2;
             // 
             // LblCorrectAnswers
             // 
@@ -118,18 +119,18 @@
             this.LblPreVerdict.TabIndex = 3;
             this.LblPreVerdict.Text = "Ответ - ";
             // 
-            // flowLayoutPanel2
+            // FlpFate
             // 
-            this.flowLayoutPanel2.Controls.Add(this.LblPreVerdict);
-            this.flowLayoutPanel2.Controls.Add(this.LblVerdict);
-            this.flowLayoutPanel2.Controls.Add(this.LblPostVerdict);
-            this.flowLayoutPanel2.Controls.Add(this.LblNeedToCorrect);
-            this.flowLayoutPanel2.Controls.Add(this.LblIrrelevant);
-            this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(344, 64);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(706, 38);
-            this.flowLayoutPanel2.TabIndex = 4;
+            this.FlpFate.Controls.Add(this.LblPreVerdict);
+            this.FlpFate.Controls.Add(this.LblVerdict);
+            this.FlpFate.Controls.Add(this.LblPostVerdict);
+            this.FlpFate.Controls.Add(this.LblNeedToCorrect);
+            this.FlpFate.Controls.Add(this.LblIrrelevant);
+            this.FlpFate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlpFate.Location = new System.Drawing.Point(344, 58);
+            this.FlpFate.Name = "FlpFate";
+            this.FlpFate.Size = new System.Drawing.Size(706, 38);
+            this.FlpFate.TabIndex = 4;
             // 
             // LblVerdict
             // 
@@ -170,10 +171,11 @@
             // RtxtHaystack
             // 
             this.RtxtHaystack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RtxtHaystack.Location = new System.Drawing.Point(344, 131);
+            this.RtxtHaystack.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.RtxtHaystack.Location = new System.Drawing.Point(344, 125);
             this.RtxtHaystack.Name = "RtxtHaystack";
             this.RtxtHaystack.ReadOnly = true;
-            this.RtxtHaystack.Size = new System.Drawing.Size(706, 476);
+            this.RtxtHaystack.Size = new System.Drawing.Size(706, 482);
             this.RtxtHaystack.TabIndex = 5;
             this.RtxtHaystack.Text = "";
             this.RtxtHaystack.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RtxtHaystack_KeyUp);
@@ -181,7 +183,7 @@
             // LblPressEnter
             // 
             this.LblPressEnter.AutoSize = true;
-            this.LblPressEnter.Location = new System.Drawing.Point(344, 105);
+            this.LblPressEnter.Location = new System.Drawing.Point(344, 99);
             this.LblPressEnter.Name = "LblPressEnter";
             this.LblPressEnter.Size = new System.Drawing.Size(191, 16);
             this.LblPressEnter.TabIndex = 6;
@@ -194,47 +196,66 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.60753F));
             this.tableLayoutPanel1.Controls.Add(this.LblNeedle, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.LblPressEnter, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.FlpHeader, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.RtxtHaystack, 1, 4);
-            this.tableLayoutPanel1.Controls.Add(this.flowLayoutPanel2, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.LstHaystacks, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.LblError, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.FlpFate, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.LblError, 1, 5);
+            this.tableLayoutPanel1.Controls.Add(this.TreeMeta, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.LblChooseHaystack, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnSelectTask, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1053, 648);
             this.tableLayoutPanel1.TabIndex = 7;
-            // 
-            // LstHaystacks
-            // 
-            this.LstHaystacks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LstHaystacks.FormattingEnabled = true;
-            this.LstHaystacks.ItemHeight = 16;
-            this.LstHaystacks.Location = new System.Drawing.Point(3, 35);
-            this.LstHaystacks.Name = "LstHaystacks";
-            this.tableLayoutPanel1.SetRowSpan(this.LstHaystacks, 3);
-            this.LstHaystacks.Size = new System.Drawing.Size(335, 90);
-            this.LstHaystacks.TabIndex = 7;
-            this.LstHaystacks.DoubleClick += new System.EventHandler(this.LbHaystacks_DoubleClick);
             // 
             // LblError
             // 
             this.LblError.AutoSize = true;
-            this.tableLayoutPanel1.SetColumnSpan(this.LblError, 2);
-            this.LblError.Location = new System.Drawing.Point(3, 610);
+            this.LblError.Location = new System.Drawing.Point(344, 610);
             this.LblError.Name = "LblError";
-            this.LblError.Size = new System.Drawing.Size(744, 16);
+            this.LblError.Size = new System.Drawing.Size(653, 32);
             this.LblError.TabIndex = 8;
             this.LblError.Text = "ОШИБКА: Не удалось загрузить список заданий. В папке с приложением должен находит" +
     "ься файл haystacks.data";
+            // 
+            // TreeMeta
+            // 
+            this.TreeMeta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TreeMeta.Location = new System.Drawing.Point(3, 35);
+            this.TreeMeta.Name = "TreeMeta";
+            this.tableLayoutPanel1.SetRowSpan(this.TreeMeta, 4);
+            this.TreeMeta.Size = new System.Drawing.Size(335, 572);
+            this.TreeMeta.TabIndex = 9;
+            this.TreeMeta.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeMeta_AfterSelect);
+            this.TreeMeta.DoubleClick += new System.EventHandler(this.TreeMeta_DoubleClick);
+            // 
+            // LblChooseHaystack
+            // 
+            this.LblChooseHaystack.AutoSize = true;
+            this.LblChooseHaystack.Location = new System.Drawing.Point(3, 0);
+            this.LblChooseHaystack.Name = "LblChooseHaystack";
+            this.LblChooseHaystack.Size = new System.Drawing.Size(123, 16);
+            this.LblChooseHaystack.TabIndex = 10;
+            this.LblChooseHaystack.Text = "Выберите задачу";
+            // 
+            // BtnSelectTask
+            // 
+            this.BtnSelectTask.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnSelectTask.Location = new System.Drawing.Point(3, 613);
+            this.BtnSelectTask.Name = "BtnSelectTask";
+            this.BtnSelectTask.Size = new System.Drawing.Size(335, 32);
+            this.BtnSelectTask.TabIndex = 11;
+            this.BtnSelectTask.Text = "Выбрать";
+            this.BtnSelectTask.UseVisualStyleBackColor = true;
+            this.BtnSelectTask.Click += new System.EventHandler(this.BtnSelectTask_Click);
             // 
             // FrmHaystack
             // 
@@ -244,10 +265,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "FrmHaystack";
             this.Text = "Сфинкс";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
+            this.FlpHeader.ResumeLayout(false);
+            this.FlpHeader.PerformLayout();
+            this.FlpFate.ResumeLayout(false);
+            this.FlpFate.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -258,12 +279,12 @@
 
         private System.Windows.Forms.Label LblNeedle;
         private System.Windows.Forms.Label LblProgress;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel FlpHeader;
         private System.Windows.Forms.Label LblCorrectAnswers;
         private System.Windows.Forms.Label LblFinalResult;
         private System.Windows.Forms.Button BtnSelectNew;
         private System.Windows.Forms.Label LblPreVerdict;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel FlpFate;
         private System.Windows.Forms.Label LblVerdict;
         private System.Windows.Forms.Label LblPostVerdict;
         private System.Windows.Forms.Label LblNeedToCorrect;
@@ -271,8 +292,10 @@
         private System.Windows.Forms.RichTextBox RtxtHaystack;
         private System.Windows.Forms.Label LblPressEnter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.ListBox LstHaystacks;
         private System.Windows.Forms.Label LblError;
+        private System.Windows.Forms.TreeView TreeMeta;
+        private System.Windows.Forms.Label LblChooseHaystack;
+        private System.Windows.Forms.Button BtnSelectTask;
     }
 }
 

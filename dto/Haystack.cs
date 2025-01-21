@@ -4,24 +4,58 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Sphinx.dto
 {
-    internal class Haystack
+    [Serializable]
+    public class Haystack
     {
-        private string wheat;
-        private string name;
-        private List<Riddle> riddles;
-        public IList<Riddle> Riddles { get {  return riddles.AsReadOnly(); } }
+        [XmlElement(ElementName = "wheat")]
+        public string wheat;
+        public readonly string name;
+        [XmlArray(ElementName = "riddles")]
+        [XmlArrayItem(ElementName = "riddle")]
+        public List<Riddle> Riddles;
+
+        public Haystack()
+        {
+        }
+
+        public Haystack(string wheat, string name, List<Riddle> riddles)
+        {
+            this.wheat = wheat;
+            this.name = name;
+            this.Riddles = riddles;
+        }
+        private string[] _grain;
+        public string[] Grain
+        {
+            get
+            {
+                if (_grain == null)
+                {
+                    _grain = Regex.Split(wheat, "\\s+");
+                }
+                return _grain;
+            }
+        }
+
+        public Riddle GetRiddle(Random rnd)
+        {
+            int next = rnd.Next(Riddles.Count);
+            return Riddles[next];
+        }
 
         public Riddle getFreshRiddle(Random rnd, string haystackId, HaystackProgress progress)
         {
-            if (progress.CurrentProgress() < progress.MaxProgress())
+            if (progress.CurrentProgress < progress.MaxProgress)
             {
                 string key = progress.RiddlesProgress.Where(pair => !pair.Value.IsPartiallySolved())
                     .First().Key;
-                return getRiddle(key);
+                return GetRiddle(key);
             } 
             else
             {
@@ -29,7 +63,7 @@ namespace Sphinx.dto
                 if (notFullySolvedRiddles.Count > 0)
                 {
                     int next = rnd.Next(notFullySolvedRiddles.Count);
-                    return getRiddle(notFullySolvedRiddles[next]);
+                    return GetRiddle(notFullySolvedRiddles[next]);
                 } else
                 {
                     return null;
@@ -96,20 +130,24 @@ namespace Sphinx.dto
             return -1;
         }
 
-        public Riddle getRiddle(string riddleId)
+        public Riddle GetRiddle(string riddleId)
         {
-            return riddles.Find(r => r.Id == riddleId);
+            return Riddles.Find(r => r.Id == riddleId);
         }
 
-        public Riddle getRiddleByNeedle(string needle)
+        public Riddle GetRiddleByNeedle(string needle)
         {
-            return riddles.Find(r => r.Needle == needle);
+            return Riddles.Find(r => r.Needle == needle);
         }
 
         public void AddRiddle(Riddle riddle)
         {
-            riddles.Add(riddle);
+            Riddles.Add(riddle);
         }
 
+        public bool IsRelevant(string[] attemptTokens)
+        {
+            return IndexOfInArr(Grain, attemptTokens) >= 0;
+        }
     }
 }

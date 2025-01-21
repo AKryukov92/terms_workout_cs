@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal class Fate
+    public class Fate
     {
         private Riddle riddle;
         private Haystack haystack;

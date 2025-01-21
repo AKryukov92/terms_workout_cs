@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal class HaystackProgress
+    public class HaystackProgress
     {
         public string HaystackId { get; private set; }
         public Haystack Haystack { get; private set; }
@@ -34,18 +34,33 @@ namespace Sphinx.dto
             }
         }
 
-        public int MaxProgress() {  return RiddlesProgress.Count; }
-        public int CurrentProgress()
+        public int MaxProgress
         {
-            return RiddlesProgress.Values.Where(r => r.IsPartiallySolved()).Count();
+            get
+            {
+                return RiddlesProgress.Count;
+            }
         }
-        public int MaxAnswerProgress()
+        public int CurrentProgress
         {
-            return Haystack.Riddles.Select(r => r.Answers.Count).Sum();
+            get
+            {
+                return RiddlesProgress.Values.Where(r => r.IsPartiallySolved()).Count();
+            }
         }
-        public int CurrentAnswerProgress()
+        public int MaxAnswerProgress
         {
-            return RiddlesProgress.Values.Select(rp => rp.countMatching()).Sum();
+            get
+            {
+                return Haystack.Riddles.Select(r => r.Answers.Count).Sum();
+            }
+        }
+        public int CurrentAnswerProgress
+        {
+            get
+            {
+                return RiddlesProgress.Values.Select(rp => rp.countMatching()).Sum();
+            }
         }
 
         public void Update(Verdict verdict)

@@ -9,8 +9,10 @@ namespace Sphinx
 {
     internal interface IView
     {
-        void ShowListOfHaystacks(string[] names);
-        void ShowHaystack(Riddle riddle);
+        void ShowMeta(Meta meta);
+        void ShowRiddle(string wheat, string needle);
         void ShowError(string error);
+        void ReportProgress(HaystackProgress progress);
+        void ShowVerdict(Verdict verdict);
     }
 }

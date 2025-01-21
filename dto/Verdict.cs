@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sphinx.dto
 {
-    internal class Verdict
+    public class Verdict
     {
         public readonly bool relevant;
         public readonly bool correct;

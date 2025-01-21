@@ -4,34 +4,48 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Sphinx.dto
 {
+    [Serializable, XmlRoot("riddle")]
     public class Riddle
     {
-        public string Id { get; private set; }
-        public string Needle { get; private set; }
-        public List<Answer> Answers { get; private set; }
+        [XmlElement(ElementName = "id")]
+        public string Id { get; set; }
+        [XmlElement(ElementName = "needle")]
+        public string Needle { get; set; }
+        [XmlElement(ElementName = "answer")]
+        public List<Answer> Answers { get; set; }
+
+        public Riddle()
+        {
+        }
+
+        public Riddle(string id, string needle, List<Answer> answers)
+        {
+            Id = id;
+            Needle = needle;
+            Answers = answers;
+        }
+
         public bool HasMultipleAnswers()
         {
             return Answers.Count > 1;
         }
 
-        public bool IsCorrect(string[] tokens)
+        public bool IsCorrect(string[] attemptTokens, string[] contextTokens)
         {
-            //String[] tokens = Regex.Split(attempt, "\\s+");
-            return Answers.Exists((a) => a.Matches(tokens));
+            return Answers.Exists((a) => a.Matches(attemptTokens, contextTokens));
         }
 
         public bool IsNeedLess(string[] tokens)
         {
-            //String[] tokens = Regex.Split(attempt, "\\s+");
             return Answers.Exists((a) => a.IsNeedLess(tokens));
         }
 
         public bool IsNeedMore(string[] tokens)
         {
-            //String[] tokens = Regex.Split(attempt, "\\s+");
             return Answers.Exists((a) => a.IsNeedMore(tokens));
         }
 
@@ -48,7 +62,7 @@ namespace Sphinx.dto
         public List<HighlightRange> ExtractRanges(string[] grain, Func<Answer, string[]> f)
         {
             return Answers.SelectMany(a =>
-                HighlightRange.HighlightAll(grain, f.Invoke(a), a.getContextFragments())
+                HighlightRange.HighlightAll(grain, f.Invoke(a), a.ContextTokens)
             ).ToList();
         }
     }

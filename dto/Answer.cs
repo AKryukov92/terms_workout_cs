@@ -6,57 +6,99 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
+using System.Xml.Serialization;
 
 namespace Sphinx.dto
 {
     public class Answer
     {
-        private readonly string minimal;
-        private readonly string maximal;
-        private readonly string context;
+        [XmlElement(ElementName = "min")]
+        public string minimal;
+        [XmlElement(ElementName = "max")]
+        public string maximal;
+        [XmlElement(ElementName = "context")]
+        public string context;
 
-        public string[] getContextFragments()
+        public Answer()
         {
-            return Regex.Split(context, "\\s+");
         }
 
-        public bool Matches(string[] attemptTokens)
+        public Answer(string minimal, string maximal, string context)
         {
-            string[] minimalTokens = Regex.Split(minimal, "\\s+");
-            string[] maximalTokens = Regex.Split(maximal, "\\s+");
-            bool matchesMinimal = Haystack.IndexOfInArr(attemptTokens, minimalTokens) >= 0;
-            bool matchesMaximal = Haystack.IndexOfInArr(maximalTokens, attemptTokens) >= 0;
-            return matchesMinimal && matchesMaximal;
+            this.minimal = minimal;
+            this.maximal = maximal;
+            this.context = context;
+        }
+
+        private string[] _minimalTokens;
+        private string[] _maximalTokens;
+        private string[] _contextTokens;
+        public string[] MinimalTokens
+        {
+            get
+            {
+                if (_minimalTokens == null)
+                {
+                    _minimalTokens = Regex.Split(minimal, "\\s+");
+                }
+                return _minimalTokens;
+            }
+        }
+        public string[] MaximalTokens
+        {
+            get
+            {
+                if (_maximalTokens == null)
+                {
+                    _maximalTokens = Regex.Split(maximal, "\\s+");
+                }
+                return _maximalTokens;
+            }
+        }
+        public string[] ContextTokens
+        {
+            get
+            {
+                if (_contextTokens == null)
+                {
+                    _contextTokens = Regex.Split(context, "\\s+");
+                }
+                return _contextTokens;
+            }
+        }
+
+        public bool Matches(string[] attemptTokens, string[] answerContext)
+        {
+            bool matchesMinimal = Haystack.IndexOfInArr(attemptTokens, MinimalTokens) >= 0;
+            bool matchesMaximal = Haystack.IndexOfInArr(MaximalTokens, attemptTokens) >= 0;
+            bool matchesContext = Haystack.IndexOfInArr(answerContext, ContextTokens) >= 0;
+            return matchesMinimal && matchesMaximal && matchesContext;
         }
 
         public bool IsNeedLess(string[] attemptTokens)
         {
-            string[] maximalTokens = Regex.Split(minimal, "\\s+");
-            return Haystack.IndexOfInArr(attemptTokens, maximalTokens) >= 0;
+            return Haystack.IndexOfInArr(attemptTokens, MaximalTokens) >= 0;
         }
 
         public bool IsNeedMore(string[] attemptTokens)
         {
-            string[] minimalTokens = Regex.Split(maximal, "\\s+");
-            return Haystack.IndexOfInArr(minimalTokens, attemptTokens) >= 0;
+            return Haystack.IndexOfInArr(MinimalTokens, attemptTokens) >= 0;
         }
 
         public bool IsMinimal(string[] attemptTokens)
         {
-            return Regex.Split(minimal, "\\s+").Equals(attemptTokens);
+            return MinimalTokens.Equals(attemptTokens);
         }
 
         public bool IsMaximal(string[] attemptTokens)
         {
-            return Regex.Split(maximal, "\\s+").Equals(attemptTokens);
+            return MaximalTokens.Equals(attemptTokens);
         }
 
         public bool RelevantTo(String[] grain)
         {
-            String[] minimalTokens = Regex.Split(minimal, "\\s+");
-            String[] maximalTokens = Regex.Split(maximal, "\\s+");
-            bool matchesMinimal = Haystack.IndexOfInArr(grain, minimalTokens) >= 0;
-            bool matchesMaximal = Haystack.IndexOfInArr(grain, maximalTokens) >= 0;
+            bool matchesMinimal = Haystack.IndexOfInArr(grain, MinimalTokens) >= 0;
+            bool matchesMaximal = Haystack.IndexOfInArr(grain, MaximalTokens) >= 0;
             return matchesMinimal && matchesMaximal;
         }
 

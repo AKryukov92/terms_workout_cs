@@ -51,6 +51,7 @@
     <Compile Include="dto\HaystackProgress.cs" />
     <Compile Include="dto\HighlightRange.cs" />
     <Compile Include="dto\Journey.cs" />
+    <Compile Include="dto\Meta.cs" />
     <Compile Include="dto\MultipleAnswerRiddleProgress.cs" />
     <Compile Include="dto\Riddle.cs" />
     <Compile Include="dto\RiddleProgress.cs" />
@@ -63,9 +64,6 @@
       <DependentUpon>FrmHaystack.cs</DependentUpon>
     </Compile>
     <Compile Include="dto\Haystack.cs" />
-    <Compile Include="FrmHaystackPart.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="IView.cs" />
     <Compile Include="Presenter.cs" />
     <Compile Include="Program.cs" />
@@ -96,8 +94,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="haystacks\" />
+    <Content Include="haystacks\1662.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="haystacks\501fc5f1-555b-4096-82bc-8909e8e6c765.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="haystacks\meta.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
