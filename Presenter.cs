@@ -49,6 +49,10 @@ namespace Sphinx
                 if (currentRiddle != null)
                 {
                     view.ShowRiddle(currentHaystack.wheat, currentRiddle.Needle);
+                    view.ShowVerdict(Fate.FreshVerdict());
+                    List<HighlightRange> ranges = journey.GetSuccessfulAttempts(currentHaystack.Grain, currentRiddle.Id);
+                    HighlightRange.JoinRanges(ranges);
+                    view.HighlightAnswers(ranges);
                 } else
                 {
                     view.ShowError("Не удалось найти задачу");
@@ -59,6 +63,16 @@ namespace Sphinx
             }
         }
         public void Guess(string originalAttempt, string originalContext)
+        {
+            var verdict = Decide(originalAttempt, originalContext);
+            journey.AddStep(verdict);
+            view.ShowVerdict(verdict);
+            List<HighlightRange> ranges = journey.GetSuccessfulAttempts(currentHaystack.Grain, currentRiddle.Id);
+            HighlightRange.JoinRanges(ranges);
+            view.HighlightAnswers(ranges);
+        }
+
+        public Verdict Decide(string originalAttempt, string originalContext)
         {
             if (currentHaystack == null || currentRiddle == null || currentHaystackId == null)
             {
@@ -71,18 +85,27 @@ namespace Sphinx
             string[] contextTokens = context.Split(' ');
             if (!currentHaystack.IsRelevant(attemptTokens))
             {
-                var verdict = past.IrrelevantVerdict(originalAttempt, originalContext);
-                journey.AddStep(verdict);
-                view.ShowVerdict(verdict);
+                return past.IrrelevantVerdict(originalAttempt, originalContext);
             }
             if (currentRiddle.IsCorrect(attemptTokens, contextTokens))
             {
-                Riddle nextRiddle = currentHaystack.GetRiddle(rnd);
-                var verdict = past.CorrectVerdict(originalAttempt, originalContext);
-                journey.AddStep(verdict);
-                view.ShowVerdict(verdict);
+                return past.CorrectVerdict(originalAttempt, originalContext);
             }
-            ....
+            else
+            {
+                if (currentRiddle.IsNeedLess(attemptTokens))
+                {
+                    return past.NeedLessVerdict(originalAttempt, originalContext);
+                }
+                else if (attempt.Length > 3 && currentRiddle.IsNeedMore(attemptTokens))
+                {
+                    return past.NeedMoreVerdict(originalAttempt, originalContext);
+                }
+                else
+                {
+                    return past.IncorrectVerdict(originalAttempt, originalContext);
+                }
+            }
         }
     }
 }

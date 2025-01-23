@@ -42,7 +42,8 @@ namespace Sphinx.dto
             foreach (var answer in riddle.Answers)
             {
                 string[] attemptTokens = Regex.Split(verdict.lastAttemptText, "\\s+");
-                if (answer.Matches(attemptTokens))
+                string[] contextTokens = Regex.Split(verdict.lastAttemptContext, "\\s+");
+                if (answer.Matches(attemptTokens, contextTokens))
                 {
                     matching.Add(answer);
                 }

@@ -8,8 +8,9 @@ namespace Sphinx.dto
 {
     public class HighlightRange
     {
-        private readonly int startIndex;
-        private readonly int endIndex;
+        public readonly int startIndex;
+        public readonly int endIndex;
+        public int Length { get { return endIndex - startIndex; } }
 
         public HighlightRange(int startIndex, int endIndex)
         {

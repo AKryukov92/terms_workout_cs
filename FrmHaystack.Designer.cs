@@ -40,13 +40,13 @@
             this.LblPostVerdict = new System.Windows.Forms.Label();
             this.LblNeedToCorrect = new System.Windows.Forms.Label();
             this.LblIrrelevant = new System.Windows.Forms.Label();
-            this.RtxtHaystack = new System.Windows.Forms.RichTextBox();
             this.LblPressEnter = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.LblError = new System.Windows.Forms.Label();
             this.TreeMeta = new System.Windows.Forms.TreeView();
             this.LblChooseHaystack = new System.Windows.Forms.Label();
             this.BtnSelectTask = new System.Windows.Forms.Button();
+            this.RtxtHaystack = new Sphinx.FixedRichTextBox();
             this.FlpHeader.SuspendLayout();
             this.FlpFate.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -168,18 +168,6 @@
             this.LblIrrelevant.TabIndex = 7;
             this.LblIrrelevant.Text = "Фрагмент текста отсутствует в задании. Попробуйте еще раз.";
             // 
-            // RtxtHaystack
-            // 
-            this.RtxtHaystack.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RtxtHaystack.Font = new System.Drawing.Font("Consolas", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.RtxtHaystack.Location = new System.Drawing.Point(344, 125);
-            this.RtxtHaystack.Name = "RtxtHaystack";
-            this.RtxtHaystack.ReadOnly = true;
-            this.RtxtHaystack.Size = new System.Drawing.Size(706, 482);
-            this.RtxtHaystack.TabIndex = 5;
-            this.RtxtHaystack.Text = "";
-            this.RtxtHaystack.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RtxtHaystack_KeyUp);
-            // 
             // LblPressEnter
             // 
             this.LblPressEnter.AutoSize = true;
@@ -197,12 +185,12 @@
             this.tableLayoutPanel1.Controls.Add(this.LblNeedle, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.LblPressEnter, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.FlpHeader, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.RtxtHaystack, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.FlpFate, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.LblError, 1, 5);
             this.tableLayoutPanel1.Controls.Add(this.TreeMeta, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.LblChooseHaystack, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnSelectTask, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.RtxtHaystack, 1, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -257,6 +245,17 @@
             this.BtnSelectTask.UseVisualStyleBackColor = true;
             this.BtnSelectTask.Click += new System.EventHandler(this.BtnSelectTask_Click);
             // 
+            // RtxtHaystack
+            // 
+            this.RtxtHaystack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.RtxtHaystack.Location = new System.Drawing.Point(344, 125);
+            this.RtxtHaystack.Name = "RtxtHaystack";
+            this.RtxtHaystack.ReadOnly = true;
+            this.RtxtHaystack.Size = new System.Drawing.Size(706, 482);
+            this.RtxtHaystack.TabIndex = 12;
+            this.RtxtHaystack.Text = "";
+            this.RtxtHaystack.KeyUp += new System.Windows.Forms.KeyEventHandler(this.RtxtHaystack_KeyUp);
+            // 
             // FrmHaystack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -289,13 +288,13 @@
         private System.Windows.Forms.Label LblPostVerdict;
         private System.Windows.Forms.Label LblNeedToCorrect;
         private System.Windows.Forms.Label LblIrrelevant;
-        private System.Windows.Forms.RichTextBox RtxtHaystack;
         private System.Windows.Forms.Label LblPressEnter;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label LblError;
         private System.Windows.Forms.TreeView TreeMeta;
         private System.Windows.Forms.Label LblChooseHaystack;
         private System.Windows.Forms.Button BtnSelectTask;
+        private FixedRichTextBox RtxtHaystack;
     }
 }
 

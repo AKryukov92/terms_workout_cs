@@ -14,5 +14,6 @@ namespace Sphinx
         void ShowError(string error);
         void ReportProgress(HaystackProgress progress);
         void ShowVerdict(Verdict verdict);
+        void HighlightAnswers(List<HighlightRange> ranges);
     }
 }

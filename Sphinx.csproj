@@ -57,6 +57,9 @@
     <Compile Include="dto\RiddleProgress.cs" />
     <Compile Include="dto\SingleAnswerRiddleProgress.cs" />
     <Compile Include="dto\Verdict.cs" />
+    <Compile Include="FixedRichTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FrmHaystack.cs">
       <SubType>Form</SubType>
     </Compile>

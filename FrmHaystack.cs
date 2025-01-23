@@ -155,7 +155,8 @@ namespace Sphinx
             {
                 LblFinalResult.Visible = true;
                 BtnSelectNew.Visible = true;
-            } else
+            }
+            else
             {
                 LblFinalResult.Visible = false;
                 BtnSelectNew.Visible = false;
@@ -167,12 +168,42 @@ namespace Sphinx
             if (verdict.correct)
             {
                 LblVerdict.Text = "верный";
-            }
-            if (verdict.incorrect)
+                LblVerdict.Visible = true;
+                LblPreVerdict.Visible = true;
+                LblPostVerdict.Visible = false;
+                LblNeedToCorrect.Visible = false;
+            } else if (verdict.incorrect)
             {
+                if (verdict.needless)
+                {
+                    LblNeedToCorrect.Text = "МЕНЬШЕ ТЕКСТА";
+                }
+                else
+                {
+                    LblNeedToCorrect.Text = "БОЛЬШЕ ТЕКСТА";
+                }
                 LblVerdict.Text = "неправильный";
+                LblVerdict.Visible = true;
+                LblPreVerdict.Visible = true;
+                LblPostVerdict.Visible = true;
+                LblNeedToCorrect.Visible = true;
+            } else
+            {
+                LblVerdict.Visible = false;
+                LblPreVerdict.Visible = false;
+                LblPostVerdict.Visible = false;
+                LblNeedToCorrect.Visible = false;
             }
             LblIrrelevant.Visible = !verdict.relevant;
+        }
+        public void HighlightAnswers(List<HighlightRange> ranges)
+        {
+            foreach (HighlightRange range in ranges)
+            {
+                RtxtHaystack.Select(range.startIndex, range.Length);
+                RtxtHaystack.SelectionColor = Color.DarkGreen;
+                RtxtHaystack.Select(0, 0);
+            }
         }
         #endregion
     }

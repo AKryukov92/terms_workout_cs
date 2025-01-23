@@ -42,7 +42,8 @@ namespace Sphinx.dto
         public override void update(Verdict verdict)
         {
             string[] attemptTokens = Regex.Split(verdict.lastAttemptText, "\\s+");
-            if (answer.Matches(attemptTokens))
+            string[] contextTokens = Regex.Split(verdict.lastAttemptContext, "\\s+");
+            if (answer.Matches(attemptTokens, contextTokens))
             {
                 matchingGiven = true;
             }
